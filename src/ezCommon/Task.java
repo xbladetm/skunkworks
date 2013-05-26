@@ -1,26 +1,34 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ezCommon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 
-/**
- *
- * @author Andrei
- */
 public class Task implements IData, Serializable {
-
-    @Override
-    public ArrayList<String> getStrings() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void create(String s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+	private int taskID;
+	private String description;	
+	private Priority priority;
+	private int userID;
+	private Date added;
+	private Date completed;
+	private Status status;
+	private int scrumUnits;
+
+	public Task (String allParams){
+			//Tokenizer goes here; 
+	}
+
+	@Override
+	public ArrayList<String> getStrings() {
+		//To change body of generated methods, choose Tools | Templates.
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public void create(String s) {
+		//To change body of generated methods, choose Tools | Templates.
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
 }

@@ -41,7 +41,7 @@ public class Message implements Serializable {
             message = new User();
         }
         if (type.equals("task")) {
-            message = new Task();
+            message = new Task(s);
         }
         if (type.equals("text")) {
             message = new Text();
