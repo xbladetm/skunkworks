@@ -4,10 +4,9 @@
  */
 package ezServer;
 
-import ezDataBase.DbConnection;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,8 +17,8 @@ import java.util.logging.Logger;
  */
 public class ComServer {
 
-    private static DatagramSocket server;
-    private static DatagramPacket packet;
+    private static ServerSocket server;
+    private static Socket s;
 
     /**
      *
@@ -28,12 +27,12 @@ public class ComServer {
     public static void main(String param) {
 
         try {
-            server = new DatagramSocket();
+            server = new ServerSocket();
 
             while (true) {
 
-                server.receive(packet);
-                Request req = new Request(packet);
+                server.accept();
+                Request req = new Request(s);
                 req.start();
 
             }
@@ -45,7 +44,14 @@ public class ComServer {
 
     }
 
+    /**
+     *
+     */
     public void quit() {
-        server.close();
+        try {
+            server.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ComServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

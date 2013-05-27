@@ -37,8 +37,12 @@ public class DbConnection {
      * @return
      */
     public DbConnection getInstance() {
-        if (connect == null) {
-            return new DbConnection();
+        if (uniqueInstance == null) {
+            synchronized (DbConnection.class) {
+                if (uniqueInstance == null) {
+                    uniqueInstance = new DbConnection();
+                }
+            }
         }
         return uniqueInstance;
     }
@@ -75,5 +79,9 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return isIt;
+    }
+
+    private void syncronized(Class<DbConnection> aClass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

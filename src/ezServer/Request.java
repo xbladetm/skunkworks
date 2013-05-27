@@ -8,9 +8,12 @@ import ezCommon.Message;
 import ezDataBase.DbConnection;
 import ezDataBase.query.*;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,61 +24,38 @@ import java.util.logging.Logger;
  */
 public class Request extends Thread {
 
-    private class Sender {
-
-        int port;
-        InetAddress address;
-
-        public Sender(int p, InetAddress a) {
-            port = p;
-            address = a;
-        }
-    }
-    Sender sender;
-    DatagramPacket packet;
+    Socket socket;
     Message message;
     Query query;
     DbConnection dataBase;
     ResultSet answer;
-    DatagramSocket socket;
 
-    Request(DatagramPacket p) {
-        packet = p;
+    Request(Socket s) {
+        socket = s;
     }
 
     @Override
     public void run() {
-        sender = new Sender(packet.getPort(), packet.getAddress());
-        //message = packet.getData(); ------ FIX THIS
+        try {
+            ObjectInputStream messageInput = new ObjectInputStream(socket.getInputStream());
+            message = (Message) messageInput.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+        }
         query = createQuery(message);
         dataBase = dataBase.getInstance();
         answer = dataBase.runQuery(query);
         //message=new Message(type,null,answer);
-        packet.setPort(sender.port);
-        packet.setAddress(sender.address);
         try {
-            //packet.setData(message);--------------- FIX THIS
-            socket.send(packet);
+
+            ObjectOutputStream messageOutput = new ObjectOutputStream(socket.getOutputStream());
+            messageOutput.writeObject(message);
+            socket.close();
         } catch (IOException ex) {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
         }
-        socket.close();
 
     }
-    /*
-     * REGISTER SENDER DATA
-     *
-     * CREATE QUERY
-     *
-     * EXECUTE QUERY
-     *
-     * CREATE MESSAGE FROM QUERY
-     *
-     * SERIALIZE MESSAGE
-     *
-     * SEND RETURN TO SENDER
-     *
-     */
 
     private Query createQuery(Message message) {
         String operation = message.getOperation();
@@ -106,10 +86,10 @@ public class Request extends Thread {
             case "update":
                 switch (type) {
                     case "user":
-                        //query=new GetUserQuery(message.getData());
+                        //query=new UpdateUserQuery(message.getData());
                         break;
                     case "task":
-                        //query=new GetTaskQuery(message.getData());
+                        //query=new UpdateTaskQuery(message.getData());
                         break;
                 }
                 break;
