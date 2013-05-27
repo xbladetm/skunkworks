@@ -9,6 +9,8 @@ package ezDataBase.query;
  * @author Andrei
  */
 public interface Query {
+
+    public String getString();
     /*create from message
      *
      *

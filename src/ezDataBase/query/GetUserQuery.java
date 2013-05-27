@@ -9,4 +9,9 @@ package ezDataBase.query;
  * @author Andrei
  */
 public class GetUserQuery implements Query {
+
+    @Override
+    public String getString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -17,48 +17,56 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
-    private String type;
-    private String operation;
-    private IData message;
+    private String type; //task, user,
+    private String operation; //get, put, update
+    private IData data;
 
     public Message() {
         type = null;
-        message = null;
+        data = null;
         operation = null; // CREATE GETTERS AND SETTERS
     }
 
     public void setMessage(IData msg) {
-        message = msg;
+        data = msg;
     }
 
     public void setMessage(String t, String s) {
         type = new String();
         type = t;
         if (type.equals("cell")) {
-            message = new Cell();
+            data = new Cell();
         }
         if (type.equals("User")) {
-            message = new User();
+            data = new User();
         }
         if (type.equals("task")) {
-            message = new Task(s);
+            data = new Task(s);
         }
         if (type.equals("text")) {
-            message = new Text();
+            data = new Text();
         }
-        message.create(s);
+        data.create(s);
 
     }
 
     public IData getMessage() {
-        return message;
+        return data;
     }
 
     public String getType() {
         return type;
     }
 
-    public void SetType(String t) {
+    public void setType(String t) {
         type = t.toLowerCase();
+    }
+
+    public void setOperation(String op) {
+        operation = op.toLowerCase();
+    }
+
+    public String getOperation() {
+        return operation;
     }
 }

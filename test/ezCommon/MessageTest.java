@@ -29,20 +29,20 @@ public class MessageTest {
     @After
     public void tearDown() throws Exception {
     }
-    
-  
-    @Test 
-    public void testSetType(){
-        Message m=new Message();
-        m.SetType("TEXT");
-        assertEquals(m.getType(),"text");
+
+    @Test
+    public void testSetType() {
+        Message m = new Message();
+        m.setType("TEXT");
+        assertEquals(m.getType(), "text");
     }
+
     @Test
     public void testSetMessage() {
-      Message m=new Message();
-      m.setMessage("text","Ola k ase");
-      assertEquals(m.getMessage().getClass(),new Text().getClass());
-      
+        Message m = new Message();
+        m.setMessage("text", "Ola k ase");
+        assertEquals(m.getMessage().getClass(), new Text().getClass());
+
     }
 
     /**
