@@ -19,6 +19,22 @@ import static org.junit.Assert.*;
  */
 public class DbConnectionTest {
 
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
     @Test
     public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.
@@ -45,6 +61,20 @@ public class DbConnectionTest {
         DbConnection instance = null;
         ResultSet expResult = null;
         ResultSet result = instance.runQuery(q);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of isConnected method, of class DbConnection.
+     */
+    @Test
+    public void testIsConnected() {
+        System.out.println("isConnected");
+        DbConnection instance = null;
+        boolean expResult = false;
+        boolean result = instance.isConnected();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

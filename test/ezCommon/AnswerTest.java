@@ -1,5 +1,6 @@
 package ezCommon;
 
+import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.junit.BeforeClass;
  * @author Andrés Giustini
  * @author Andrei Mirza
  */
-public class MessageTest {
+public class AnswerTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -32,53 +33,53 @@ public class MessageTest {
 
     @Test
     public void testSetType() {
-        Message m = new Message();
+        Answer m = new Answer();
         m.setType("TEXT");
         assertEquals(m.getType(), "text");
     }
 
     @Test
     public void testSetMessage() {
-        Message m = new Message();
-        m.setMessage("text", "Ola k ase");
+        Answer m = new Answer();
+        m.createEmptyMessage("text", "Ola k ase");
         assertEquals(m.getMessage().getClass(), new Text().getClass());
 
     }
 
     /**
-     * Test of setMessage method, of class Message.
+     * Test of createEmptyMessage method, of class Answer.
      */
     @Test
     public void testSetMessage_IData() {
         System.out.println("setMessage");
         IData msg = null;
-        Message instance = new Message();
-        instance.setMessage(msg);
+        Answer instance = new Answer();
+        instance.createFromData(msg);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setMessage method, of class Message.
+     * Test of createEmptyMessage method, of class Answer.
      */
     @Test
     public void testSetMessage_String_String() {
         System.out.println("setMessage");
         String t = "";
         String s = "";
-        Message instance = new Message();
-        instance.setMessage(t, s);
+        Answer instance = new Answer();
+        instance.createEmptyMessage(t, s);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getMessage method, of class Message.
+     * Test of getMessage method, of class Answer.
      */
     @Test
     public void testGetMessage() {
         System.out.println("getMessage");
-        Message instance = new Message();
+        Answer instance = new Answer();
         IData expResult = null;
         IData result = instance.getMessage();
         assertEquals(expResult, result);
@@ -87,14 +88,28 @@ public class MessageTest {
     }
 
     /**
-     * Test of getType method, of class Message.
+     * Test of getType method, of class Answer.
      */
     @Test
     public void testGetType() {
         System.out.println("getType");
-        Message instance = new Message();
+        Answer instance = new Answer();
         String expResult = "";
         String result = instance.getType();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of iterator method, of class Answer.
+     */
+    @Test
+    public void testIterator() {
+        System.out.println("iterator");
+        Answer instance = new Answer();
+        Iterator expResult = null;
+        Iterator result = instance.iterator();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

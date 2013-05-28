@@ -80,8 +80,4 @@ public class DbConnection {
         }
         return isIt;
     }
-
-    private void syncronized(Class<DbConnection> aClass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

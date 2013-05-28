@@ -41,4 +41,25 @@ public class QueryTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of getString method, of class Query.
+     */
+    @Test
+    public void testGetString() {
+        System.out.println("getString");
+        Query instance = new QueryImpl();
+        String expResult = "";
+        String result = instance.getString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    public class QueryImpl implements Query {
+
+        public String getString() {
+            return "";
+        }
+    }
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ezDataBase.query;
+package ezCommon;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author Andrei
  */
-public class GetUserQueryTest {
+public class PriorityTest {
 
-    public GetUserQueryTest() {
+    public PriorityTest() {
     }
 
     @BeforeClass
@@ -36,21 +36,28 @@ public class GetUserQueryTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of values method, of class Priority.
+     */
     @Test
-    public void testSomeMethod() {
+    public void testValues() {
+        System.out.println("values");
+        Priority[] expResult = null;
+        Priority[] result = Priority.values();
+        assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getString method, of class GetUserQuery.
+     * Test of valueOf method, of class Priority.
      */
     @Test
-    public void testGetString() {
-        System.out.println("getString");
-        GetUserQuery instance = new GetUserQuery();
-        String expResult = "";
-        String result = instance.getString();
+    public void testValueOf() {
+        System.out.println("valueOf");
+        String name = "";
+        Priority expResult = null;
+        Priority result = Priority.valueOf(name);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

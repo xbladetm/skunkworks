@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ezCommon;
+package ezClient;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,8 +16,8 @@ import org.junit.runners.Suite;
  * @author Andrei
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({StatusTest.class, AnswerTest.class, CellTest.class, TextTest.class, TaskTest.class, IDataTest.class, UserTest.class, PriorityTest.class})
-public class EzCommonSuite {
+@Suite.SuiteClasses({})
+public class EzClientSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {

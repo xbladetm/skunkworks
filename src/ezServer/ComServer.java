@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Andrei
+ * @author Andrés,Andrei
  */
 public class ComServer {
 
@@ -27,11 +27,11 @@ public class ComServer {
     public static void main(String param) {
 
         try {
-            server = new ServerSocket();
+            server = new ServerSocket(6969);
 
             while (true) {
 
-                server.accept();
+                s = server.accept();
                 Request req = new Request(s);
                 req.start();
 

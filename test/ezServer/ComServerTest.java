@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ezDataBase.query;
+package ezServer;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author Andrei
  */
-public class GetUserQueryTest {
+public class ComServerTest {
 
-    public GetUserQueryTest() {
+    public ComServerTest() {
     }
 
     @BeforeClass
@@ -36,22 +36,26 @@ public class GetUserQueryTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of main method, of class ComServer.
+     */
     @Test
-    public void testSomeMethod() {
+    public void testMain() {
+        System.out.println("main");
+        String param = "";
+        ComServer.main(param);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getString method, of class GetUserQuery.
+     * Test of quit method, of class ComServer.
      */
     @Test
-    public void testGetString() {
-        System.out.println("getString");
-        GetUserQuery instance = new GetUserQuery();
-        String expResult = "";
-        String result = instance.getString();
-        assertEquals(expResult, result);
+    public void testQuit() {
+        System.out.println("quit");
+        ComServer instance = new ComServer();
+        instance.quit();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
