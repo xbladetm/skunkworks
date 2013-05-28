@@ -43,11 +43,11 @@ public class Request extends Thread {
         dataBase = dataBase.getInstance();
         //Might not work with threads; may need sync'd access.
         answer = dataBase.runQuery(query);
-        //message=new Answer(type,null,answer);
+        message = new Answer(answer, query.getType());
         try {
 
-            ObjectOutputStream messageOutput = new ObjectOutputStream(socket.getOutputStream());
-            messageOutput.writeObject(message);
+            ObjectOutputStream answerOutput = new ObjectOutputStream(socket.getOutputStream());
+            answerOutput.writeObject(message);
             socket.close();
         } catch (IOException ex) {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);

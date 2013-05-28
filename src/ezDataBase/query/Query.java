@@ -17,4 +17,6 @@ public interface Query {
      *
      * convert to message
      */
+
+    public String getType();
 }

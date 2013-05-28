@@ -24,7 +24,7 @@ public class ComServer {
      *
      * @param param
      */
-    public static void main(String param) {
+    public static void main(String[] param) {
 
         try {
             server = new ServerSocket(6969);

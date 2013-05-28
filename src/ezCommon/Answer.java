@@ -33,8 +33,7 @@ public class Answer implements Serializable, Iterable {
      *
      * @param r
      */
-    public Answer(ResultSet r) {
-        //PARSE AND CREATE OBJECT LIST FROM RESULT SET
+    public Answer(ResultSet r, String type) {
     }
 
     @Override

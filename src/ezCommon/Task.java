@@ -1,8 +1,9 @@
 package ezCommon;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import java.sql.Date;
+
 
 public class Task implements IData, Serializable {
     
@@ -15,20 +16,36 @@ public class Task implements IData, Serializable {
 	private Status status;
 	private int scrumUnits;
 
-	public Task (String allParams){
-			//Tokenizer goes here; 
+	public Task() {
+		
 	}
 
 	@Override
 	public ArrayList<String> getStrings() {
-		//To change body of generated methods, choose Tools | Templates.
-		throw new UnsupportedOperationException("Not supported yet.");
+		ArrayList<String> listAtr = new ArrayList<>();
+		listAtr.add("" + this.taskID);
+		listAtr.add(this.description);
+		listAtr.add("" + this.priority);
+		listAtr.add("" + this.added);
+		listAtr.add("" + this.completed);
+		listAtr.add("" + this.status);
+		listAtr.add("" + this.scrumUnits);
+		
+		return listAtr;
+		
 	}
 
 	@Override
 	public void create(String s) {
-		//To change body of generated methods, choose Tools | Templates.
-		throw new UnsupportedOperationException("Not supported yet.");
+		StringTokenizer tokens = new StringTokenizer(s);
+		this.taskID = Integer.parseInt(tokens.nextToken());
+		this.description = tokens.nextToken();	
+		// this.priority = ;
+		this.userID = Integer.parseInt(tokens.nextToken());
+		//this.added = ;
+		// this.completed = ;
+		// this.status = ;
+		this.scrumUnits = Integer.parseInt(tokens.nextToken());
+		
 	}
-
 }
