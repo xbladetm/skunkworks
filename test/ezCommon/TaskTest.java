@@ -43,7 +43,7 @@ public class TaskTest {
     @Test
     public void testGetStrings() {
         System.out.println("getStrings");
-        Task instance = null;
+        Task instance = new Task();
         ArrayList expResult = null;
         ArrayList result = instance.getStrings();
         assertEquals(expResult, result);
@@ -58,36 +58,9 @@ public class TaskTest {
     public void testCreate() {
         System.out.println("create");
         String s = "";
-        Task instance = null;
+        Task instance = new Task();
         instance.create(s);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    /**
-     * Test of getStrings method, of class Task.
-     */
-    /* @Test
-     public void testGetStrings() {
-     System.out.println("getStrings");
-     // Task instance = new;
-     ArrayList expResult = null;
-     ArrayList result = instance.getStrings();
-     assertEquals(expResult, result);
-     // TODO review the generated test code and remove the default call to fail.
-     fail("The test case is a prototype.");
-     }
-     */
-    /**
-     * Test of create method, of class Task.
-     */
-    /*   @Test
-     public void testCreate() {
-     System.out.println("create");
-     String s = "";
-     Task instance = new Task();
-     instance.create(s);
-     // TODO review the generated test code and remove the default call to fail.
-     fail("The test case is a prototype.");
-     }
-     */
 }

@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author Andrei
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({StatusTest.class, AnswerTest.class, CellTest.class, TextTest.class, TaskTest.class, IDataTest.class, UserTest.class, PriorityTest.class})
+@Suite.SuiteClasses({ezCommon.StatusTest.class, ezCommon.AnswerTest.class, ezCommon.TaskTest.class, ezCommon.IDataTest.class, ezCommon.UserTest.class, ezCommon.PriorityTest.class})
 public class EzCommonSuite {
 
     @BeforeClass

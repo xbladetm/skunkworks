@@ -4,7 +4,6 @@
  */
 package ezDataBase;
 
-import ezDataBase.query.Query;
 import java.sql.ResultSet;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,26 +18,23 @@ import static org.junit.Assert.*;
  */
 public class DbConnectionTest {
 
+    public DbConnectionTest() {
+    }
+
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() {
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @After
-    public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void tearDown() {
     }
 
     /**
@@ -47,8 +43,12 @@ public class DbConnectionTest {
     @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        DbConnection connect;
-
+        DbConnection instance = null;
+        DbConnection expResult = null;
+        DbConnection result = instance.getInstance();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**

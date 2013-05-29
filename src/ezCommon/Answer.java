@@ -36,6 +36,7 @@ public class Answer implements Serializable, Iterable {
     public Answer(ResultSet r, String type) {
         objects = new ArrayList<>();
 
+
     }
 
     @Override

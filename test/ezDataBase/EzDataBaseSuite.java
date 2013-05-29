@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author Andrei
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ezDataBase.query.QuerySuite.class, ezDataBase.DbConnectionTest.class})
+@Suite.SuiteClasses({ezDataBase.DbConnectionTest.class, ezDataBase.QueryTest.class})
 public class EzDataBaseSuite {
 
     @BeforeClass

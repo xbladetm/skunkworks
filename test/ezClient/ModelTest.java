@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ezDataBase.query;
+package ezClient;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author Andrei
  */
-public class PutUserQueryTest {
+public class ModelTest {
 
-    public PutUserQueryTest() {
+    public ModelTest() {
     }
 
     @BeforeClass

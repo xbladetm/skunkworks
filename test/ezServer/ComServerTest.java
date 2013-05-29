@@ -17,20 +17,23 @@ import static org.junit.Assert.*;
  */
 public class ComServerTest {
 
+    public ComServerTest() {
+    }
+
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() {
     }
 
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() {
     }
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     /**
@@ -41,7 +44,8 @@ public class ComServerTest {
         System.out.println("main");
         String[] param = null;
         ComServer.main(param);
-
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**

@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author Andrei
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
+@Suite.SuiteClasses({ezBoard.ModelTest.class})
 public class EzBoardSuite {
 
     @BeforeClass

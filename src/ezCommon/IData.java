@@ -1,4 +1,3 @@
-
 package ezCommon;
 
 import java.util.ArrayList;
@@ -9,8 +8,8 @@ import java.util.ArrayList;
  * @author Andrés Giustini
  */
 public interface IData {
-    
+
     public ArrayList<String> getStrings();
+
     public void create(String s);
-    
 }

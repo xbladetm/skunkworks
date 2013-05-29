@@ -6,7 +6,7 @@ package ezServer;
 
 import ezCommon.Answer;
 import ezDataBase.DbConnection;
-import ezDataBase.query.*;
+import ezDataBase.Query;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
