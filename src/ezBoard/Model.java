@@ -1,12 +1,84 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ezBoard;
+
+import java.util.*;
+import ezCommon.*;
 
 /**
  *
- * @author Andrei
+ * @authors Andrei, Andrés
+ * 
  */
-public class Model {
+
+public class Model implements IBoardSubject {
+	
+	List<IBoardObserver> counterObservers = new ArrayList<>();
+	
+	List<Task> colToDo = new ArrayList<>();
+	List<Task> colInProgress = new ArrayList<>();
+	List<Task> colDone = new ArrayList<>();
+	
+	public int numTasks(Status s) {
+		int cont = 0;
+		
+		
+		
+		
+		return cont;
+	}
+	
+	
+	public Model() {
+		System.out.println("Model()");
+		this.colToDo = null;
+		this.colInProgress = null;
+		this.colDone = null;
+	}
+	
+	public void addTask(Task t) {
+		Status s = t.getStatus();
+		boolean update = false;
+		
+		switch (s) {
+			case NOTSTARTED:
+				if (!this.colToDo.contains(t)) {
+					this.colToDo.add(t);
+					update = true;
+				}
+				break;
+			case INPROGRESS:
+				if (!this.colInProgress.contains(t)) {
+					this.colInProgress.add(t);
+					update = true;
+				}
+				break;
+			case DONE:
+				if (!this.colDone.contains(t)) {
+					this.colDone.add(t);
+					update = true;
+				}
+				break;
+		}
+		
+		// Only will notify the observer if it has
+		// added a task that did not exist.
+		if (update) notifyObservers();
+	}
+	
+	
+	@Override
+	public void registerObserver(IBoardObserver o) {
+		counterObservers.add(o);
+	}
+
+	@Override
+	public void removeObserver(IBoardObserver o) {
+		counterObservers.remove(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (IBoardObserver o: counterObservers)
+			o.updateBoard();
+	}
+	
 }

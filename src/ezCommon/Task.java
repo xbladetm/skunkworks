@@ -19,6 +19,18 @@ public class Task implements IData, Serializable {
 	public Task() {
 		
 	}
+	
+	// Getters
+	
+	public Status getStatus() {
+		return this.status;
+	}
+	
+	// Setters
+	
+	
+	
+	
 
 	@Override
 	public ArrayList<String> getStrings() {
@@ -32,7 +44,6 @@ public class Task implements IData, Serializable {
 		listAtr.add("" + this.scrumUnits);
 		
 		return listAtr;
-		
 	}
 
 	@Override
