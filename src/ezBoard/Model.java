@@ -16,22 +16,24 @@ public class Model implements IBoardSubject {
 	List<Task> colToDo = new ArrayList<>();
 	List<Task> colInProgress = new ArrayList<>();
 	List<Task> colDone = new ArrayList<>();
-	
-	public int numTasks(Status s) {
-		int cont = 0;
-		
-		
-		
-		
-		return cont;
-	}
-	
-	
+
 	public Model() {
 		System.out.println("Model()");
 		this.colToDo = null;
 		this.colInProgress = null;
 		this.colDone = null;
+	}
+	
+	public int getNumToDo() {
+		return this.colToDo.size();
+	}
+	
+	public int getNumInProgress() {
+		return this.colInProgress.size();
+	}
+	
+	public int getNumDone() {
+		return this.colDone.size();
 	}
 	
 	public void addTask(Task t) {
@@ -60,7 +62,7 @@ public class Model implements IBoardSubject {
 		}
 		
 		// Only will notify the observer if it has
-		// added a task that did not exist.
+		// added a task that did not exists
 		if (update) notifyObservers();
 	}
 	
