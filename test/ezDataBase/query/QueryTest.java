@@ -62,4 +62,18 @@ public class QueryTest {
             return "";
         }
     }
+
+    /**
+     * Test of getType method, of class Query.
+     */
+    @Test
+    public void testGetType() {
+        System.out.println("getType");
+        Query instance = new QueryImpl();
+        String expResult = "";
+        String result = instance.getType();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
