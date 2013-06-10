@@ -4,8 +4,8 @@
  */
 package ezDataBase;
 
-import ezDataBase.Query;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,13 +19,13 @@ import java.util.logging.Logger;
  */
 public class DbConnection {
 
-    static volatile DbConnection uniqueInstance;
+    static final DbConnection uniqueInstance = new DbConnection();
     Connection connect;
     Statement query;
 
     private DbConnection() {
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://localhost/EZKanban", "superadmin", "12345");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/ezkanban?user=superadmin&password=12345");
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,14 +36,7 @@ public class DbConnection {
      *
      * @return
      */
-    public DbConnection getInstance() {
-        if (uniqueInstance == null) {
-            synchronized (DbConnection.class) {
-                if (uniqueInstance == null) {
-                    uniqueInstance = new DbConnection();
-                }
-            }
-        }
+    public static DbConnection getInstance() {
         return uniqueInstance;
     }
 

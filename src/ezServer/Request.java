@@ -33,17 +33,24 @@ public class Request extends Thread {
 
     @Override
     public void run() {
+        System.out.println("REQUEST: Request Created");
         try {
             ObjectInputStream QueryInput = new ObjectInputStream(socket.getInputStream());
             query = (Query) QueryInput.readObject();
+            System.out.println("REQUEST: Read query from socket: " + query.getString());
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        System.out.println("REQUEST: Retrieveing Db connection");
         dataBase = dataBase.getInstance();
         //Might not work with threads; may need sync'd access.
+        System.out.println("REQUEST: Attempting to run query");
         answer = dataBase.runQuery(query);
+
+        System.out.println("REQUEST: Parsing result");
         message = new Answer(answer, query.getType());
+
+        System.out.println("REQUEST: Sending Answer");
         try {
 
             ObjectOutputStream answerOutput = new ObjectOutputStream(socket.getOutputStream());
@@ -52,6 +59,6 @@ public class Request extends Thread {
         } catch (IOException ex) {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        System.out.println("REQUEST: Request finished.");
     }
 }

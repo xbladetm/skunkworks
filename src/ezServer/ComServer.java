@@ -28,12 +28,14 @@ public class ComServer {
 
         try {
             server = new ServerSocket(6969);
-
+            System.out.println("SERVER: Server is running");
             while (true) {
 
                 s = server.accept();
+                System.out.println("SERVER: Accepted Connection! Starting request.");
                 Request req = new Request(s);
                 req.start();
+                System.out.println("SERVER: Request Ended");
 
             }
         } catch (SocketException ex) {
@@ -42,16 +44,5 @@ public class ComServer {
             Logger.getLogger(ComServer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
-
-    /**
-     *
-     */
-    public void quit() {
-        try {
-            server.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ComServer.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

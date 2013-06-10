@@ -13,10 +13,15 @@
  */
 package ezCommon;
 
+import com.sun.rowset.internal.Row;
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Answer implements Serializable, Iterable {
 
@@ -26,7 +31,6 @@ public class Answer implements Serializable, Iterable {
      *
      */
     public Answer() {
-        objects = null;
     }
 
     /**
@@ -35,9 +39,7 @@ public class Answer implements Serializable, Iterable {
      */
     public Answer(ResultSet r, String type) {
         objects = new ArrayList<>();
-        if (type.equals("task")) {
-        } else {
-        }
+
 
 
     }
@@ -45,5 +47,9 @@ public class Answer implements Serializable, Iterable {
     @Override
     public Iterator iterator() {
         return objects.iterator();
+    }
+
+    public ArrayList<IData> getObjects() {
+        return objects;
     }
 }
