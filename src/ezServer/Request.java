@@ -42,22 +42,33 @@ public class Request extends Thread {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("REQUEST: Retrieveing Db connection");
-        dataBase = dataBase.getInstance();
+        dataBase = DbConnection.getInstance();
         //Might not work with threads; may need sync'd access.
         System.out.println("REQUEST: Attempting to run query");
-        answer = dataBase.runQuery(query);
+        if (query.getType().equals("modify")) {
+            int done = dataBase.runUpdate(query);
+            if (done == 1) {
+                System.out.println("REQUEST: Update Successful");
+            } else {
+                System.out.println("REQUEST: Update Failed");
 
-        System.out.println("REQUEST: Parsing result");
-        message = new Answer(answer, query.getType());
 
-        System.out.println("REQUEST: Sending Answer");
-        try {
+            }
+        } else {
+            answer = dataBase.runQuery(query);
+            System.out.println("REQUEST: Parsing result");
+            message = new Answer(answer, query.getType());
 
-            ObjectOutputStream answerOutput = new ObjectOutputStream(socket.getOutputStream());
-            answerOutput.writeObject(message);
-            socket.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("REQUEST: Sending Answer");
+            try {
+
+                ObjectOutputStream answerOutput = new ObjectOutputStream(socket.getOutputStream());
+                answerOutput.writeObject(message);
+                socket.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
         System.out.println("REQUEST: Request finished.");
     }

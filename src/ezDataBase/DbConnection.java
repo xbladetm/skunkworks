@@ -49,7 +49,6 @@ public class DbConnection {
         try {
             query = connect.createStatement();
             query.executeQuery(q.getString());
-
             return query.getResultSet();
 
 
@@ -57,6 +56,20 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+
+    }
+
+    public int runUpdate(Query q) {
+        try {
+            query = connect.createStatement();
+
+            return query.executeUpdate(q.getString());
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
 
     }
 

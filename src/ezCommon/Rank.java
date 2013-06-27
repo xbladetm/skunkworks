@@ -2,11 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ezClient;
+package ezCommon;
 
 /**
  *
  * @author Andrei
  */
-public class Model {
+public enum Rank {
+
+    USER, SUPERVISOR, ADMIN
 }

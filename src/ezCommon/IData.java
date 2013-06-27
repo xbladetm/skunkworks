@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface IData {
 
-    public ArrayList<String> getStrings();
+    public String getString();
 
     public void create(String s);
 }

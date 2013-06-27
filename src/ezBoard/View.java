@@ -4,11 +4,15 @@
  */
 package ezBoard;
 
+import ezCommon.IData;
+import ezCommon.Task;
+import java.util.ArrayList;
+
 /**
  *
  * @author Andrei
  */
-public class View extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame implements IBoardObserver {
 
     /**
      * Creates new form View
@@ -28,11 +32,12 @@ public class View extends javax.swing.JFrame {
 
         jPanel11 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        toDoCol = new javax.swing.JPanel();
+        inProgressCol = new javax.swing.JPanel();
+        doneCol = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -57,70 +62,54 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel18.setBackground(new java.awt.Color(51, 51, 51));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        jPanel4.setBackground(new java.awt.Color(204, 0, 0));
+        toDoCol.setBackground(new java.awt.Color(204, 0, 0));
+        toDoCol.setLayout(new javax.swing.BoxLayout(toDoCol, javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        inProgressCol.setBackground(new java.awt.Color(255, 255, 51));
+        inProgressCol.setLayout(new javax.swing.BoxLayout(inProgressCol, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 51));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 301, Short.MAX_VALUE)
-        );
-
-        jPanel6.setBackground(new java.awt.Color(51, 204, 0));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        doneCol.setBackground(new java.awt.Color(51, 204, 0));
+        doneCol.setLayout(new javax.swing.BoxLayout(doneCol, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(toDoCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(inProgressCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(doneCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(inProgressCol, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+            .addComponent(toDoCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(doneCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        toDoCol.getAccessibleContext().setAccessibleName("toDoColumn");
+        inProgressCol.getAccessibleContext().setAccessibleName("inProgressColumn");
+        doneCol.getAccessibleContext().setAccessibleName("doneCol");
 
         jProgressBar1.setBackground(new java.awt.Color(51, 51, 51));
         jProgressBar1.setForeground(new java.awt.Color(0, 102, 102));
@@ -134,7 +123,7 @@ public class View extends javax.swing.JFrame {
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,49 +146,90 @@ public class View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel doneCol;
+    private javax.swing.JPanel inProgressCol;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JPanel toDoCol;
     // End of variables declaration//GEN-END:variables
+    ArrayList<IData> toDo;
+    ArrayList<IData> inProgress;
+    ArrayList<IData> done;
+
+    @Override
+    public void updateBoard() {
+        setUpTasks();
+    }
+
+    public void setUpTasks() {
+        System.out.println("VIEW: updating");
+        System.out.println("VIEW: clearing existing data");
+        toDoCol.removeAll();
+        inProgressCol.removeAll();
+        doneCol.removeAll();
+        if (toDo != null) {
+            for (IData t : toDo) {
+                Task tsk = new Task();
+                tsk.create(t.getString());
+                System.out.println("VIEW: creating new entry");
+                javax.swing.JPanel entry = new javax.swing.JPanel();
+                entry.setBackground(new java.awt.Color(153, 0, 0));
+                entry.setSize(super.getWidth(), 51);
+                entry.setForeground(new java.awt.Color(255, 255, 255));
+                entry.add(new java.awt.Label(tsk.getDescription()));
+                entry.add(new java.awt.Label(tsk.getPriority()));
+                System.out.println("VIEW: adding new entry to panel");
+                toDoCol.add(entry);
+
+            }
+            System.out.println("VIEW: repainting Panel");
+            toDoCol.revalidate();
+            toDoCol.repaint();
+        }
+        if (inProgress != null) {
+            for (IData t : inProgress) {
+                Task tsk = new Task();
+                tsk.create(t.getString());
+                System.out.println("VIEW: creating new entry");
+                javax.swing.JPanel entry = new javax.swing.JPanel();
+                entry.setBackground(new java.awt.Color(153, 153, 0));
+                entry.setSize(super.getWidth(), 51);
+                entry.setForeground(new java.awt.Color(255, 255, 255));
+                entry.add(new java.awt.Label(tsk.getDescription()));
+                entry.add(new java.awt.Label(tsk.getPriority()));
+                System.out.println("VIEW: adding new entry to panel");
+                inProgressCol.revalidate();
+                inProgressCol.add(entry);
+
+            }
+            System.out.println("VIEW: repainting Panel");
+            inProgressCol.repaint();
+        }
+        if (done != null) {
+            for (IData t : done) {
+                Task tsk = new Task();
+                tsk.create(t.getString());
+                System.out.println("VIEW: creating new entry");
+                javax.swing.JPanel entry = new javax.swing.JPanel();
+                entry.setBackground(new java.awt.Color(0, 153, 0));
+                entry.setSize(super.getWidth(), 51);
+                entry.setForeground(new java.awt.Color(255, 255, 255));
+                entry.add(new java.awt.Label(tsk.getDescription()));
+                entry.add(new java.awt.Label(tsk.getPriority()));
+                System.out.println("VIEW: adding new entry to panel");
+                doneCol.add(entry);
+
+            }
+            System.out.println("VIEW: repainting Panel");
+            doneCol.revalidate();
+            doneCol.repaint();
+        }
+
+
+    }
 }
