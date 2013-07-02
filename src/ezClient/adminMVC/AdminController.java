@@ -20,7 +20,7 @@ public class AdminController {
     private AdminView myView;
 
     public AdminController() {
-        System.out.println("CONTOLLER CREATED");
+        System.out.println("ADMIN CONTOLLER CREATED");
 
 
     }

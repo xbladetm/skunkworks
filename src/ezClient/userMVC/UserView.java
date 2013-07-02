@@ -99,20 +99,25 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JSlider(), org.jdesktop.beansbinding.ELProperty.create("${value}"), taskScrumUnits, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+		/*
         taskScrumUnits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskScrumUnitsActionPerformed(evt);
             }
         });
+		*/
 
         assignTaskBtn.setBackground(new java.awt.Color(0, 51, 204));
         assignTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         assignTaskBtn.setText("Assign Task");
+		
+		/*
         assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignTaskBtnActionPerformed(evt);
             }
         });
+		*/
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,11 +149,13 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         taskDateAdded.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         taskDateAdded.setText("jTextField3");
         taskDateAdded.setBorder(null);
+		/*
         taskDateAdded.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskDateAddedActionPerformed(evt);
             }
         });
+		*/
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -258,11 +265,14 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         completeTaskBtn.setBackground(new java.awt.Color(0, 153, 0));
         completeTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         completeTaskBtn.setText("Mark as Done");
+		
+		/*
         completeTaskBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 completeTaskBtnActionPerformed(evt);
             }
         });
+		*/
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -326,21 +336,30 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         pack();
     }
 
+	/*
     private void completeTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
+	*/
 
+	/*
     private void assignTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
-
+	*/
+	
+	/*
     private void taskScrumUnitsActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
-
+	*/
+	
+	/*
     private void taskDateAddedActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
+	*/
+	
     // Variables declaration - do not modify
     private javax.swing.JButton assignTaskBtn;
     private javax.swing.JList availableList;
@@ -368,11 +387,22 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
     // End of variables declaration
 
     public void addController(UserController controller) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+		taskScrumUnits.addActionListener(controller.assignTaskBtnActionPerformed());
+		taskDateAdded.addActionListener(controller.taskDateAddedActionPerformed());
+		taskScrumUnits.addActionListener(controller.taskScrumUnitsActionPerformed());
+		completeTaskBtn.addActionListener(controller.completeTaskBtnActionPerformed());
+        
+		
+	
     }
 
     @Override
     public void updateClient() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+	
+	void run() {
+		this.setVisible(true);
+	}
 }
