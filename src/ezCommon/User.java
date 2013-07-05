@@ -69,7 +69,35 @@ public class User implements IData, Serializable {
         return password.equals(pass);
     }
 
+    public String getName() {
+        return "" + name;
+    }
+
+    public String getSurname() {
+        return "" + surname;
+    }
+
     public String getRank() {
         return "" + rank;
+    }
+
+    public String getTeam() {
+        return "" + team;
+    }
+
+    public String getScrumUnits() {
+        return "" + scrumUnits;
+    }
+
+    public String getUsername() {
+        return "" + username;
+    }
+
+    public String getPassword() {
+        return "" + password;
+    }
+
+    public String getUserID() {
+        return "" + userId;
     }
 }

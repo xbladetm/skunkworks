@@ -72,11 +72,11 @@ public class AdminController {
     }
 
     ComboBoxModel getTaskPriorityModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new javax.swing.DefaultComboBoxModel(myModel.getPriority());
     }
 
     ComboBoxModel getTaskStausModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new javax.swing.DefaultComboBoxModel(myModel.getStatus());
     }
 
     ActionListener getAddTaskBtnListener() {

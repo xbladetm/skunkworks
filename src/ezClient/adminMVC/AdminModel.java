@@ -8,7 +8,9 @@ import ezClient.IClientObserver;
 import ezClient.IClientSubject;
 import ezCommon.Answer;
 import ezCommon.IData;
+import ezCommon.Priority;
 import ezCommon.Rank;
+import ezCommon.Status;
 import ezCommon.Task;
 import ezCommon.Team;
 import ezCommon.User;
@@ -112,12 +114,44 @@ public class AdminModel implements IClientSubject {
     }
 
     public void addUser(User u) {
+        Query q = new Query("INSERT INTO ezkanban.users( NAME, SURNAME, RANK, TEAM, SCRUMUNITS, USERNAME, PASSWORD)"
+                + " VALUES( '" + u.getName()
+                + "', '" + u.getSurname()
+                + "', '" + u.getRank()
+                + "', '" + u.getTeam()
+                + "', '" + u.getScrumUnits()
+                + "', '" + u.getUsername()
+                + "', '" + u.getPassword()
+                + "');", "modify");
+        Answer a = new Answer();
+        System.out.println(q.getString());
+        a = a.sendQuery(q);
+        notifyObservers();
     }
 
     public void removeUser(User u) {
+        System.out.println("MODEL: removing USER" + u.getName());
+        Query q = new Query("DELETE FROM users WHERE USERID ='" + u.getUserID() + "';", "modify");
+        Answer a = new Answer();
+        a = a.sendQuery(q);
+        notifyObservers();
     }
 
     public void updateUser(User u) {
+        Query q = new Query("UPDATE users SET"
+                + "NAME='" + u.getName()
+                + "', SURNAME= '" + u.getSurname()
+                + "', RANK= '" + u.getRank()
+                + "', TEAM= '" + u.getTeam()
+                + "', SCRUMUNITS= '" + u.getScrumUnits()
+                + "', USERNAME= '" + u.getUsername()
+                + "', PASSWORD= '" + u.getPassword()
+                + "');", "modify");
+
+        Answer a = new Answer();
+        System.out.println(q.getString());
+        a = a.sendQuery(q);
+        notifyObservers();
     }
     //TASKS TAB MODEL FUNCTIONS
     //USER TAB MODEL FUNCTIONS
@@ -128,6 +162,14 @@ public class AdminModel implements IClientSubject {
 
     Team[] getTeams() {
         return Team.values();
+    }
+
+    Priority[] getPriority() {
+        return Priority.values();
+    }
+
+    Status[] getStatus() {
+        return Status.values();
     }
 
     public static void main(String params[]) {
