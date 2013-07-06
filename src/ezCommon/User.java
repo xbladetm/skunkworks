@@ -69,6 +69,8 @@ public class User implements IData, Serializable {
         return password.equals(pass);
     }
 
+	// ---------- ---------- Getters ---------- ----------
+	
     public String getName() {
         return "" + name;
     }
@@ -99,5 +101,40 @@ public class User implements IData, Serializable {
 
     public String getUserID() {
         return "" + userId;
+    }
+	
+	// ---------- ---------- Setters ---------- ----------
+	
+	public void setName(String n) {
+        this.name = n;
+    }
+
+    public void setSurname(String sn) {
+        this.surname = sn;
+    }
+
+    public void setRank(String r) {
+        this.rank = Rank.valueOf(r);
+    }
+
+    public void setTeam(String t) {
+        this.team = Team.valueOf(t);
+    }
+
+    public void setScrumUnits(String su) {
+        this.scrumUnits = Integer.parseInt(su);
+    }
+
+    public void setUsername(String n) {
+        this.username = n;
+    }
+
+    public void setPassword(String psswd) {
+        this.password = psswd;
+    }
+
+    public void setUserID(String uid) {
+		
+        this.userId = Integer.parseInt(uid);
     }
 }
