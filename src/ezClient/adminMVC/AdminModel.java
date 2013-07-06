@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * 
  */
 package ezClient.adminMVC;
 
@@ -23,6 +22,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class AdminModel implements IClientSubject {
 
@@ -141,22 +141,22 @@ public class AdminModel implements IClientSubject {
 
     public void removeUser(User u) {
         System.out.println("MODEL: removing USER" + u.getName());
-        Query q = new Query("DELETE FROM users WHERE USERID ='" + u.getUserID() + "';", "modify");
+        Query q = new Query("DELETE FROM users WHERE UID ='" + u.getUserID() + "';", "modify");
         Answer a = new Answer();
         a = a.sendQuery(q);
 
     }
 
     public void updateUser(User u) {
-        Query q = new Query("UPDATE users SET"
+        Query q = new Query("UPDATE `users` SET "
                 + "NAME='" + u.getName()
-                + "', SURNAME= '" + u.getSurname()
-                + "', RANK= '" + u.getRank()
-                + "', TEAM= '" + u.getTeam()
-                + "', SCRUMUNITS= '" + u.getScrumUnits()
-                + "', USERNAME= '" + u.getUsername()
-                + "', PASSWORD= '" + u.getPassword()
-                + "');", "modify");
+                + "', SURNAME='" + u.getSurname()
+                + "', RANK='" + u.getRank()
+                + "', TEAM='" + u.getTeam()
+                + "', SCRUMUNITS='" + u.getScrumUnits()
+                + "', USERNAME='" + u.getUsername()
+                + "', PASSWORD='" + u.getPassword()
+                + "' WHERE UID= '" + u.getUserID() + "';", "modify");
 
         Answer a = new Answer();
         System.out.println(q.getString());

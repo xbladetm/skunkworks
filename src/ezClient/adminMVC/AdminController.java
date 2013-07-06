@@ -65,32 +65,44 @@ public class AdminController {
     }
 
     ActionListener getAddUserBtnListener() {
-        /* return new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-         User u = new User();
-
-         myModel.addUser(u);
-         myModel.users.add(u);
-         myView.userList.setModel(getUserListModel());
-         }
-         };*/
-        return null;
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User u = new User();
+                u.setName(myView.userName.getText().trim());
+                u.setSurname(myView.userSurname.getText().trim());
+                u.setRank("" + myView.userRank.getSelectedItem());
+                u.setTeam("" + myView.userTeam.getSelectedItem());
+                u.setScrumUnits("" + myView.userScrumUnits.getValue());
+                u.setUsername(myView.userUsername.getText().trim());
+                u.setPassword(myView.userPassword.getText());
+                myModel.addUser(u);
+                myModel.users.add(u);
+                myView.userList.setModel(getUserListModel());
+            }
+        };
     }
 
     ActionListener getUpdateUserBtnListener() {
-        /* return new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
-         int pos = myView.userList.getSelectedIndex() - 1;
-         User u = (User) myModel.users.get(pos);
-         myModel.updateUser(u);
-         myModel.users.remove(pos);
-         myModel.users.add(pos, u);
-         myView.userList.setModel(getUserListModel());
-         }
-         };*/
-        return null;
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int pos = myView.userList.getSelectedIndex() - 1;
+                User u = (User) myModel.users.get(pos);
+                u.setName(myView.userName.getText().trim());
+                u.setSurname(myView.userSurname.getText().trim());
+                u.setRank("" + myView.userRank.getSelectedItem());
+                u.setTeam("" + myView.userTeam.getSelectedItem());
+                u.setScrumUnits("" + myView.userScrumUnits.getValue());
+                u.setUsername(myView.userUsername.getText().trim());
+                u.setPassword(myView.userPassword.getText());
+                myModel.updateUser(u);
+                myModel.users.remove(pos);
+                myModel.users.add(pos, u);
+                myView.userList.setModel(getUserListModel());
+            }
+        };
+
     }
 
     ActionListener getRemoveUserBtnListener() {

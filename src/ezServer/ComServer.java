@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * El servidor espera a recibir una solicitud por medio de un paquete UDP y crea
+ * un objeto ezKanban.ezServer.Request para atender la peticion en un nuevo hilo.
  */
 package ezServer;
 

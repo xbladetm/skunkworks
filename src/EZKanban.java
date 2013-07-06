@@ -4,12 +4,16 @@ import ezClient.Client;
 import ezServer.ComServer;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Programa principal. Es el que permite seleccionar que parte del programa se
+ * quiere cargar.
+ * Este código fue generado por NetBeans.
+ * Al tratarse de una función auxliliar del programa que cumple una tarea muy
+ * simple no se ha implementado MVC para esta interfaz.
  */
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class EZKanban extends javax.swing.JFrame {
 

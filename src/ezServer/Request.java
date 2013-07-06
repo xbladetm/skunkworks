@@ -1,6 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Request recibe como parametro el socket que accepta el servidor y, a partir
+ * de este extrae el paquete de datos, obtiene la instancia de la conexión a
+ * la base de datos, crea el objeto Answer que realzia la operacion indicada sobre la base de datos
+ * y devuelve el resultado por el socket.
  */
 package ezServer;
 
@@ -43,7 +45,7 @@ public class Request extends Thread {
         }
         System.out.println("REQUEST: Retrieveing Db connection");
         dataBase = DbConnection.getInstance();
-        //Might not work with threads; may need sync'd access.
+
         System.out.println("REQUEST: Attempting to run query");
         if (query.getType().equals("modify")) {
             int done = dataBase.runUpdate(query);
