@@ -374,15 +374,15 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField myTaskDescription;
-    private javax.swing.JList myTaskList;
-    private javax.swing.JTextField taskDateAdded;
-    private javax.swing.JTextField taskDescription;
-    private javax.swing.JTextField taskPriority;
-    private javax.swing.JTextField taskScrumUnits;
+    javax.swing.JScrollPane jScrollPane1;
+    javax.swing.JScrollPane jScrollPane2;
+    javax.swing.JTabbedPane jTabbedPane1;
+    javax.swing.JTextField myTaskDescription;
+    javax.swing.JList myTaskList;
+    javax.swing.JTextField taskDateAdded;
+    javax.swing.JTextField taskDescription;
+    javax.swing.JTextField taskPriority;
+    javax.swing.JTextField taskScrumUnits;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration
 
