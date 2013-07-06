@@ -59,30 +59,89 @@ public class AdminController {
 
     DefaultListModel getUserListModel() {
         DefaultListModel model = new DefaultListModel();
-        for (IData elem : myModel.users) {
-            User u = (User) elem;
-            model.addElement(u.getName());
-        }
+        updateUserListModel(model);
         return model;
 
     }
 
     ActionListener getAddUserBtnListener() {
+        /* return new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+         User u = new User();
+
+         myModel.addUser(u);
+         myModel.users.add(u);
+         myView.userList.setModel(getUserListModel());
+         }
+         };*/
         return null;
     }
 
     ActionListener getUpdateUserBtnListener() {
+        /* return new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+         int pos = myView.userList.getSelectedIndex() - 1;
+         User u = (User) myModel.users.get(pos);
+         myModel.updateUser(u);
+         myModel.users.remove(pos);
+         myModel.users.add(pos, u);
+         myView.userList.setModel(getUserListModel());
+         }
+         };*/
         return null;
     }
 
     ActionListener getRemoveUserBtnListener() {
-        return null;
-    }
-    // TASKS TAB MODELS AND LISTENERS
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int del = myView.userList.getSelectedIndex() - 1;
+                myModel.removeUser((User) myModel.users.get(del));
+                myModel.users.remove(del);
+                myView.userList.setModel(getUserListModel());
 
+            }
+        };
+    }
+
+    ListSelectionListener getUserListSelectionListener() {
+        return new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (myView.userList.getSelectedIndex() == 0) {
+                    myView.removeUserBtn.setEnabled(false);
+                    myView.updateUserBtn.setEnabled(false);
+                    myView.addUserBtn.setEnabled(true);
+                    myView.userName.setText("");
+                    myView.userScrumUnits.setValue(50);
+                    myView.userPassword.setText("");
+                    myView.userSurname.setText("");
+                    myView.userUsername.setText("");
+                } else if (myView.userList.getSelectedIndex() != -1) {
+                    myView.addUserBtn.setEnabled(false);
+                    myView.removeUserBtn.setEnabled(true);
+                    myView.updateUserBtn.setEnabled(true);
+                    User u = (User) myModel.users.get(myView.userList.getSelectedIndex() - 1);
+                    myView.userName.setText(u.getName());
+                    myView.userSurname.setText(u.getSurname());
+                    myView.userRank.setSelectedItem(u.getRank());
+                    myView.userTeam.setSelectedItem(u.getTeam());
+                    myView.userScrumUnits.setValue(Integer.parseInt(u.getScrumUnits()));
+                    myView.userUsername.setText(u.getUsername());
+                    myView.userPassword.setText(u.getPassword());
+                }
+
+            }
+        };
+
+    }
+
+    // TASKS TAB MODELS AND LISTENERS
     ListModel getTaskListModel() {
         DefaultListModel model = new DefaultListModel();
-        updateModel(model);
+        updateTaskListModel(model);
         return model;
     }
 
@@ -146,7 +205,7 @@ public class AdminController {
         };
     }
 
-    ListSelectionListener getListSelectionListener() {
+    ListSelectionListener getTaskListSelectionListener() {
         return new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -176,12 +235,22 @@ public class AdminController {
 
     }
 
-    private void updateModel(DefaultListModel model) {
+    private void updateTaskListModel(DefaultListModel model) {
         model.removeAllElements();
         model.addElement("+ Add Task");
         for (IData elem : myModel.tasks) {
             Task t = (Task) elem;
             model.addElement(t.getDescription());
+        }
+
+    }
+
+    private void updateUserListModel(DefaultListModel model) {
+        model.removeAllElements();
+        model.addElement("+ Add User");
+        for (IData elem : myModel.users) {
+            User u = (User) elem;
+            model.addElement(u.getName());
         }
 
     }

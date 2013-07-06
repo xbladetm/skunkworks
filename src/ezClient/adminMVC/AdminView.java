@@ -52,7 +52,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
         userTeam = new javax.swing.JComboBox();
         userRank = new javax.swing.JComboBox();
         userUsername = new javax.swing.JTextField();
-        userPassword = new javax.swing.JTextField();
+        userPassword = new javax.swing.JPasswordField();
         userScrumUnits = new javax.swing.JSlider();
         jTextField7 = new javax.swing.JTextField();
         addUserBtn = new javax.swing.JButton();
@@ -319,14 +319,14 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
         userSurname.setForeground(new java.awt.Color(255, 255, 255));
         userSurname.setText("jTextField4");
 
-        userTeam.setBackground(new java.awt.Color(102, 102, 102));
+        userTeam.setBackground(new java.awt.Color(51, 51, 51));
         userTeam.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-
+        userTeam.setForeground(new java.awt.Color(204, 204, 204));
 
 
         userRank.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-
-
+        userRank.setBackground(new java.awt.Color(51, 51, 51));
+        userRank.setForeground(new java.awt.Color(204, 204, 204));
 
         userUsername.setBackground(new java.awt.Color(51, 51, 51));
         userUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -356,14 +356,15 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         addUserBtn.setBackground(new java.awt.Color(0, 204, 0));
         addUserBtn.setText("Add User");
-
+        addUserBtn.setForeground(new java.awt.Color(255, 255, 255));
 
 
         updateUserBtn.setBackground(new java.awt.Color(255, 102, 0));
         updateUserBtn.setText("Update User");
-
+        updateUserBtn.setForeground(new java.awt.Color(255, 255, 255));
         removeUserBtn.setBackground(new java.awt.Color(255, 0, 0));
         removeUserBtn.setText("Remove User");
+        removeUserBtn.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -574,7 +575,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         //Tasks Tab controlled fields
         taskList.setModel(controller.getTaskListModel());
-        taskList.addListSelectionListener(controller.getListSelectionListener());
+        taskList.addListSelectionListener(controller.getTaskListSelectionListener());
         taskPriority.setModel(controller.getTaskPriorityModel());
         taskStatus.setModel(controller.getTaskStausModel());
         addTaskBtn.addActionListener(controller.getAddTaskBtnListener());
@@ -583,6 +584,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         //Users Tab controlled fields
         userList.setModel(controller.getUserListModel());
+        userList.addListSelectionListener(controller.getUserListSelectionListener());
         userRank.setModel(controller.getUserRankModel());
         userTeam.setModel(controller.getUserTeamModel());
         addUserBtn.addActionListener(controller.getAddUserBtnListener());
