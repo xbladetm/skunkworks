@@ -100,27 +100,19 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
         taskDescription.setForeground(new java.awt.Color(204, 204, 204));
         taskDescription.setText("Description goes here");
         taskDescription.setBorder(null);
+        taskDateAdded.setCaretColor(new java.awt.Color(255, 255, 255));
 
         taskPriority.setBackground(new java.awt.Color(51, 51, 51));
         taskPriority.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        taskPriority.setForeground(new java.awt.Color(204, 204, 204));
 
 
         taskStatus.setBackground(new java.awt.Color(51, 51, 51));
         taskStatus.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-
+        taskStatus.setForeground(new java.awt.Color(204, 204, 204));
 
         taskDateAdded.setBackground(new java.awt.Color(0, 102, 51));
         taskDateAdded.setForeground(new java.awt.Color(255, 255, 255));
-        /*
-         ########################################################################
-         ##############################THIS GOES TO THE CONTROLLER###############
-         ########################################################################
-         */
-        try {
-            taskDateAdded.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
         taskDateAdded.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         taskDateAdded.setText(" MM-DD -YYYY    ");
         taskDateAdded.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -128,16 +120,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         taskDateComplete.setBackground(new java.awt.Color(153, 0, 51));
         taskDateComplete.setForeground(new java.awt.Color(255, 255, 255));
-        /*
-         ########################################################################
-         ##############################THIS GOES TO THE CONTROLLER###############
-         ########################################################################
-         */
-        try {
-            taskDateComplete.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        taskDateComplete.setText(" MM-DD -YYYY    ");
         taskDateComplete.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         taskDateComplete.setToolTipText("");
         taskDateComplete.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -161,12 +144,16 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
         addTaskBtn.setBackground(new java.awt.Color(0, 153, 0));
         addTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         addTaskBtn.setText("Add Task");
+        addTaskBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addTaskBtn.setEnabled(false);
 
         updateTaskBtn.setBackground(new java.awt.Color(255, 153, 0));
         updateTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         updateTaskBtn.setText("Update Task");
+        updateTaskBtn.setForeground(new java.awt.Color(255, 255, 255));
 
         removeTaskBtn.setBackground(new java.awt.Color(204, 0, 0));
+        removeTaskBtn.setForeground(new java.awt.Color(255, 255, 255));
         removeTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         removeTaskBtn.setText("Remove Task");
 
@@ -197,7 +184,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Dates are MM-dd-YYYY");
+        jLabel6.setText("Dates are YYYY-MM-DD");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -534,8 +521,8 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
         pack();
     }
     // Variables declaration - do not modify
-    private javax.swing.JButton addTaskBtn;
-    private javax.swing.JButton addUserBtn;
+    javax.swing.JButton addTaskBtn;
+    javax.swing.JButton addUserBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -559,27 +546,27 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JButton removeTaskBtn;
-    private javax.swing.JButton removeUserBtn;
-    private javax.swing.JFormattedTextField taskDateAdded;
-    private javax.swing.JFormattedTextField taskDateComplete;
-    private javax.swing.JTextField taskDescription;
+    javax.swing.JTextField jTextField2;
+    javax.swing.JTextField jTextField7;
+    javax.swing.JButton removeTaskBtn;
+    javax.swing.JButton removeUserBtn;
+    javax.swing.JTextField taskDateAdded;
+    javax.swing.JTextField taskDateComplete;
+    javax.swing.JTextField taskDescription;
     javax.swing.JList taskList;
-    private javax.swing.JComboBox taskPriority;
-    private javax.swing.JSlider taskScrumUnits;
-    private javax.swing.JComboBox taskStatus;
-    private javax.swing.JButton updateTaskBtn;
-    private javax.swing.JButton updateUserBtn;
-    private javax.swing.JList userList;
-    private javax.swing.JTextField userName;
-    private javax.swing.JTextField userPassword;
-    private javax.swing.JComboBox userRank;
-    private javax.swing.JSlider userScrumUnits;
-    private javax.swing.JTextField userSurname;
-    private javax.swing.JComboBox userTeam;
-    private javax.swing.JTextField userUsername;
+    javax.swing.JComboBox taskPriority;
+    javax.swing.JSlider taskScrumUnits;
+    javax.swing.JComboBox taskStatus;
+    javax.swing.JButton updateTaskBtn;
+    javax.swing.JButton updateUserBtn;
+    javax.swing.JList userList;
+    javax.swing.JTextField userName;
+    javax.swing.JTextField userPassword;
+    javax.swing.JComboBox userRank;
+    javax.swing.JSlider userScrumUnits;
+    javax.swing.JTextField userSurname;
+    javax.swing.JComboBox userTeam;
+    javax.swing.JTextField userUsername;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration
 
@@ -587,6 +574,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
         //Tasks Tab controlled fields
         taskList.setModel(controller.getTaskListModel());
+        taskList.addListSelectionListener(controller.getListSelectionListener());
         taskPriority.setModel(controller.getTaskPriorityModel());
         taskStatus.setModel(controller.getTaskStausModel());
         addTaskBtn.addActionListener(controller.getAddTaskBtnListener());
@@ -608,7 +596,7 @@ public class AdminView extends javax.swing.JFrame implements IClientObserver {
 
     @Override
     public void updateClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.repaint();
     }
 
     void run() {

@@ -4,11 +4,16 @@
  */
 package ezClient.adminMVC;
 
+import ezCommon.IData;
 import ezCommon.Task;
+import ezCommon.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -37,6 +42,9 @@ public class AdminController {
 
     public void runView() {
         System.out.println("CONTOLLER running view");
+        while (myModel.tasks == null) {
+            continue;
+        }
         myView.run();
     }
 
@@ -49,26 +57,33 @@ public class AdminController {
         return new javax.swing.DefaultComboBoxModel(myModel.getTeams());
     }
 
-    ListModel getUserListModel() {
-        return null;
+    DefaultListModel getUserListModel() {
+        DefaultListModel model = new DefaultListModel();
+        for (IData elem : myModel.users) {
+            User u = (User) elem;
+            model.addElement(u.getName());
+        }
+        return model;
 
     }
 
     ActionListener getAddUserBtnListener() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     ActionListener getUpdateUserBtnListener() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     ActionListener getRemoveUserBtnListener() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
-
     // TASKS TAB MODELS AND LISTENERS
+
     ListModel getTaskListModel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultListModel model = new DefaultListModel();
+        updateModel(model);
+        return model;
     }
 
     ComboBoxModel getTaskPriorityModel() {
@@ -80,20 +95,94 @@ public class AdminController {
     }
 
     ActionListener getAddTaskBtnListener() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Task t = new Task();
+                t.setDescription(myView.taskDescription.getText().trim());
+                t.setPriority(myView.taskPriority.getSelectedItem().toString().trim());
+                t.setStatus(myView.taskStatus.getSelectedItem().toString().trim());
+                t.setAdded(myView.taskDateAdded.getText().trim());
+                t.setCompleted(myView.taskDateComplete.getText().trim());
+                t.setScrumUnits("" + myView.taskScrumUnits.getValue());
+                t.setUserId(1);
+                myModel.addTask(t);
+                myModel.tasks.add(t);
+                myView.taskList.setModel(getTaskListModel());
+            }
+        };
     }
 
     ActionListener getUpdateTaskBtnListener() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int pos = myView.taskList.getSelectedIndex() - 1;
+                Task t = (Task) myModel.tasks.get(pos);
+                t.setDescription(myView.taskDescription.getText().trim());
+                t.setPriority(myView.taskPriority.getSelectedItem().toString().trim());
+                t.setStatus(myView.taskStatus.getSelectedItem().toString().trim());
+                t.setAdded(myView.taskDateAdded.getText().trim());
+                t.setCompleted(myView.taskDateComplete.getText().trim());
+                t.setScrumUnits("" + myView.taskScrumUnits.getValue());
+                myModel.updateTask(t);
+                myModel.tasks.remove(pos);
+                myModel.tasks.add(pos, t);
+                myView.taskList.setModel(getTaskListModel());
+            }
+        };
     }
 
     ActionListener getRemoveTaskBtnListener() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                myModel.removeTask((Task) myModel.tasks.get(myView.taskList.getSelectedIndex()));
+                int del = myView.taskList.getSelectedIndex() - 1;
+                myModel.removeTask((Task) myModel.tasks.get(del));
+                myModel.tasks.remove(del);
+                myView.taskList.setModel(getTaskListModel());
 
             }
         };
+    }
+
+    ListSelectionListener getListSelectionListener() {
+        return new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (myView.taskList.getSelectedIndex() == 0) {
+                    myView.removeTaskBtn.setEnabled(false);
+                    myView.updateTaskBtn.setEnabled(false);
+                    myView.addTaskBtn.setEnabled(true);
+                    myView.taskDescription.setText("");
+                    myView.taskDateAdded.setText("YYYY-MM-DD");
+                    myView.taskDateComplete.setText("YYYY-MM-DD");
+                    myView.taskScrumUnits.setValue(0);
+
+                } else if (myView.taskList.getSelectedIndex() != -1) {
+                    myView.addTaskBtn.setEnabled(false);
+                    myView.removeTaskBtn.setEnabled(true);
+                    myView.updateTaskBtn.setEnabled(true);
+                    Task t = (Task) myModel.tasks.get(myView.taskList.getSelectedIndex() - 1);
+                    myView.taskDescription.setText(t.getDescription());
+                    myView.taskDateAdded.setText(t.getAddedDate());
+                    myView.taskDateComplete.setText(t.getDoneDate());
+                    myView.taskScrumUnits.setValue(Integer.parseInt(t.getScrumUnits()));
+                    myView.taskPriority.setSelectedItem(t.getPriority());
+                    myView.taskStatus.setSelectedItem(t.getStatus());
+                }
+            }
+        };
+
+    }
+
+    private void updateModel(DefaultListModel model) {
+        model.removeAllElements();
+        model.addElement("+ Add Task");
+        for (IData elem : myModel.tasks) {
+            Task t = (Task) elem;
+            model.addElement(t.getDescription());
+        }
+
     }
 }

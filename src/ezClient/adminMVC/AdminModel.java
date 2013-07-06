@@ -17,6 +17,8 @@ import ezCommon.User;
 import ezDataBase.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,6 +34,7 @@ public class AdminModel implements IClientSubject {
     public AdminModel(User usr) {
         System.out.println("MODEL CREATED");
         user = usr;
+
         observers = new ArrayList<>();
         System.out.println("MODEL: getting tasks from db");
         tasks = getTasksFromDb();
@@ -59,18 +62,22 @@ public class AdminModel implements IClientSubject {
 
     }
 
-    private ArrayList<IData> getTasksFromDb() {
+    public ArrayList<IData> getTasksFromDb() {
+
         System.out.println("MODEl: getting tasks");
         Answer a = new Answer();
         a = a.sendQuery(new Query("SELECT * FROM tasks;", "task"));
         System.out.println("MODEL: getting tasks from db" + a.getObjects());
+
         return a.getObjects();
     }
 
-    private ArrayList<IData> getUSersFromDb() {
+    public ArrayList<IData> getUSersFromDb() {
+
         System.out.println("MODEL: getting users");
         Answer a = new Answer();
         a = a.sendQuery(new Query("SELECT * FROM users;", "user"));
+
         return a.getObjects();
     }
 
@@ -87,7 +94,8 @@ public class AdminModel implements IClientSubject {
         Answer a = new Answer();
         System.out.println(q.getString());
         a = a.sendQuery(q);
-        notifyObservers();
+
+
     }
 
     public void removeTask(Task t) {
@@ -95,7 +103,8 @@ public class AdminModel implements IClientSubject {
         Query q = new Query("DELETE FROM tasks WHERE TASKID ='" + t.getTaskID() + "';", "modify");
         Answer a = new Answer();
         a = a.sendQuery(q);
-        notifyObservers();
+
+
     }
 
     public void updateTask(Task t) {
@@ -110,7 +119,8 @@ public class AdminModel implements IClientSubject {
                 + "' WHERE TASKID= '" + t.getTaskID() + "';", "modify");
         Answer a = new Answer();
         a = a.sendQuery(q);
-        notifyObservers();
+
+
     }
 
     public void addUser(User u) {
@@ -126,7 +136,7 @@ public class AdminModel implements IClientSubject {
         Answer a = new Answer();
         System.out.println(q.getString());
         a = a.sendQuery(q);
-        notifyObservers();
+
     }
 
     public void removeUser(User u) {
@@ -134,7 +144,7 @@ public class AdminModel implements IClientSubject {
         Query q = new Query("DELETE FROM users WHERE USERID ='" + u.getUserID() + "';", "modify");
         Answer a = new Answer();
         a = a.sendQuery(q);
-        notifyObservers();
+
     }
 
     public void updateUser(User u) {
@@ -151,7 +161,7 @@ public class AdminModel implements IClientSubject {
         Answer a = new Answer();
         System.out.println(q.getString());
         a = a.sendQuery(q);
-        notifyObservers();
+
     }
     //TASKS TAB MODEL FUNCTIONS
     //USER TAB MODEL FUNCTIONS

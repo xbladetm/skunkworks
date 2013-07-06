@@ -75,6 +75,30 @@ public class Task implements IData, Serializable {
         description = s;
     }
 
+    public void setPriority(String p) {
+        priority = Priority.valueOf(p);
+    }
+
+    public void setUserId(int uid) {
+        userID = uid;
+    }
+
+    public void setAdded(String a) {
+        added = parseDate(a);
+    }
+
+    public void setCompleted(String c) {
+        completed = parseDate(c);
+    }
+
+    public void setStatus(String s) {
+        status = Status.valueOf(s);
+    }
+
+    public void setScrumUnits(String u) {
+        scrumUnits = Integer.parseInt(u);
+    }
+
     //Interface and private functions
     @Override
     public String getString() {
