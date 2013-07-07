@@ -2,6 +2,7 @@ package ezClient.userMVC;
 
 import ezClient.IClientObserver;
 import ezClient.IClientSubject;
+import ezClient.adminMVC.AdminModel;
 import ezCommon.Answer;
 import ezCommon.IData;
 import ezCommon.Task;
