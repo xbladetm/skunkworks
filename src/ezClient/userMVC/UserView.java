@@ -94,6 +94,8 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         assignTaskBtn.setBackground(new java.awt.Color(0, 51, 204));
         assignTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         assignTaskBtn.setText("Assign Task");
+        assignTaskBtn.setForeground(new java.awt.Color(255, 255, 255));
+
 
         /*
          assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +239,7 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         completeTaskBtn.setBackground(new java.awt.Color(0, 153, 0));
         completeTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         completeTaskBtn.setText("Mark as Done");
+        completeTaskBtn.setForeground(new java.awt.Color(255, 255, 255));
 
         /*
          completeTaskBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -345,7 +348,7 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
 
     @Override
     public void updateClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.repaint();
     }
 
     void run() {

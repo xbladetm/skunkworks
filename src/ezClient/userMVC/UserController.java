@@ -71,9 +71,11 @@ public class UserController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (myView.myTaskList.getSelectedIndex() != -1 && !myModel.tasks.isEmpty()) {
+                    myView.completeTaskBtn.setEnabled(true);
                     Task t = (Task) myModel.myTasks.get(myView.myTaskList.getSelectedIndex());
                     myView.myTaskDescription.setText(t.getDescription());
-
+                } else {
+                    myView.completeTaskBtn.setEnabled(false);
                 }
             }
         };
@@ -84,10 +86,14 @@ public class UserController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (myView.availableList.getSelectedIndex() != -1 && !myModel.myTasks.isEmpty()) {
+                    myView.assignTaskBtn.setEnabled(true);
                     Task t = (Task) myModel.tasks.get(myView.availableList.getSelectedIndex());
                     myView.taskDateAdded.setText(t.getAddedDate());
                     myView.taskDescription.setText(t.getDescription());
                     myView.taskScrumUnits.setText(t.getScrumUnits());
+                    myView.taskPriority.setText(t.getPriority());
+                } else {
+                    myView.assignTaskBtn.setEnabled(false);
                 }
             }
         };

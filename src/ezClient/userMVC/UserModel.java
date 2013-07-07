@@ -60,7 +60,7 @@ public class UserModel implements IClientSubject {
         System.out.println("USER MODEl: getting tasks");
         Answer a = new Answer();
         a = a.sendQuery(new Query("SELECT * FROM tasks WHERE STATUS ='NOTSTARTED';", "task"));
-
+        notifyObservers();
         return a.getObjects();
     }
 
@@ -69,7 +69,7 @@ public class UserModel implements IClientSubject {
         Answer a = new Answer();
         String uid = user.getUserID();
         a = a.sendQuery(new Query("SELECT * FROM tasks WHERE USER ='" + uid + "' AND STATUS = 'INPROGRESS' ;", "task"));
-
+        notifyObservers();
         return a.getObjects();
     }
 
