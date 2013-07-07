@@ -1,6 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* Este objeto implementa el patrón Singleton y es el encargado
+ * de mantener la conexión con el servidor de MySQL.
+ * Permite ejecutar consultas y modificaciones de datos.
  */
 package ezDataBase;
 
@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class DbConnection {
 

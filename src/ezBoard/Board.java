@@ -1,12 +1,12 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Board es el programa principal que ejecuta el MVC de la pizarra de Kanban.
  */
 package ezBoard;
 
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class Board {
 

@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class Request extends Thread {
 

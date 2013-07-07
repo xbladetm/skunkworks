@@ -1,6 +1,7 @@
 package ezClient.userMVC;
 
 import ezClient.IClientObserver;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -53,17 +54,7 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         availableList.setBackground(new java.awt.Color(102, 102, 102));
         availableList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         availableList.setForeground(new java.awt.Color(255, 255, 255));
-        availableList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
 
-            public int getSize() {
-                return strings.length;
-            }
-
-            public Object getElementAt(int i) {
-                return strings[i];
-            }
-        });
         availableList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         availableList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         availableList.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
@@ -99,25 +90,18 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JSlider(), org.jdesktop.beansbinding.ELProperty.create("${value}"), taskScrumUnits, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-		/*
-        taskScrumUnits.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taskScrumUnitsActionPerformed(evt);
-            }
-        });
-		*/
 
         assignTaskBtn.setBackground(new java.awt.Color(0, 51, 204));
         assignTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         assignTaskBtn.setText("Assign Task");
-		
-		/*
-        assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignTaskBtnActionPerformed(evt);
-            }
-        });
-		*/
+
+        /*
+         assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+         assignTaskBtnActionPerformed(evt);
+         }
+         });
+         */
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,7 +123,6 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         taskPriority.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         taskPriority.setForeground(new java.awt.Color(255, 255, 255));
         taskPriority.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        taskPriority.setText("jTextField1");
         taskPriority.setBorder(null);
 
         taskDateAdded.setEditable(false);
@@ -147,15 +130,14 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         taskDateAdded.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         taskDateAdded.setForeground(new java.awt.Color(255, 255, 255));
         taskDateAdded.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        taskDateAdded.setText("jTextField3");
         taskDateAdded.setBorder(null);
-		/*
-        taskDateAdded.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taskDateAddedActionPerformed(evt);
-            }
-        });
-		*/
+        /*
+         taskDateAdded.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+         taskDateAddedActionPerformed(evt);
+         }
+         });
+         */
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -231,17 +213,7 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         myTaskList.setBackground(new java.awt.Color(102, 102, 102));
         myTaskList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         myTaskList.setForeground(new java.awt.Color(255, 255, 255));
-        myTaskList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
 
-            public int getSize() {
-                return strings.length;
-            }
-
-            public Object getElementAt(int i) {
-                return strings[i];
-            }
-        });
         jScrollPane2.setViewportView(myTaskList);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -265,14 +237,14 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
         completeTaskBtn.setBackground(new java.awt.Color(0, 153, 0));
         completeTaskBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         completeTaskBtn.setText("Mark as Done");
-		
-		/*
-        completeTaskBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                completeTaskBtnActionPerformed(evt);
-            }
-        });
-		*/
+
+        /*
+         completeTaskBtn.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+         completeTaskBtnActionPerformed(evt);
+         }
+         });
+         */
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -335,35 +307,10 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
 
         pack();
     }
-
-	/*
-    private void completeTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-	*/
-
-	/*
-    private void assignTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-	*/
-	
-	/*
-    private void taskScrumUnitsActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-	*/
-	
-	/*
-    private void taskDateAddedActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-	*/
-	
     // Variables declaration - do not modify
-    private javax.swing.JButton assignTaskBtn;
-    private javax.swing.JList availableList;
-    private javax.swing.JButton completeTaskBtn;
+    javax.swing.JButton assignTaskBtn;
+    javax.swing.JList availableList;
+    javax.swing.JButton completeTaskBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -377,32 +324,31 @@ public class UserView extends javax.swing.JFrame implements IClientObserver {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField myTaskDescription;
-    private javax.swing.JList myTaskList;
-    private javax.swing.JTextField taskDateAdded;
-    private javax.swing.JTextField taskDescription;
-    private javax.swing.JTextField taskPriority;
-    private javax.swing.JTextField taskScrumUnits;
+    javax.swing.JTextField myTaskDescription;
+    javax.swing.JList myTaskList;
+    javax.swing.JTextField taskDateAdded;
+    javax.swing.JTextField taskDescription;
+    javax.swing.JTextField taskPriority;
+    javax.swing.JTextField taskScrumUnits;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration
 
     public void addController(UserController controller) {
 
-		taskScrumUnits.addActionListener(controller.assignTaskBtnActionPerformed());
-		taskDateAdded.addActionListener(controller.taskDateAddedActionPerformed());
-		taskScrumUnits.addActionListener(controller.taskScrumUnitsActionPerformed());
-		completeTaskBtn.addActionListener(controller.completeTaskBtnActionPerformed());
-        
-		
-	
+        availableList.setModel(controller.getAvailableListModel());
+        availableList.addListSelectionListener(controller.getAvailableListSelectionListener());
+        myTaskList.setModel(controller.getMyTaskListModel());
+        myTaskList.addListSelectionListener(controller.getMyTaskListSelectionListener());
+        assignTaskBtn.addActionListener(controller.getAssignTaskBtnActionListener());
+        completeTaskBtn.addActionListener(controller.getCompleteTaskBtnActionListener());
     }
 
     @Override
     public void updateClient() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-	
-	void run() {
-		this.setVisible(true);
-	}
+
+    void run() {
+        this.setVisible(true);
+    }
 }

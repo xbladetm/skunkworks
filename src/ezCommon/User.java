@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * User almacena toda la informacion referente a un usuario y los metodos para
+ * modificar dicha información.
  */
 package ezCommon;
 
@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 /**
  *
  * @author Andrei
+ * @author Andrés
  */
 public class User implements IData, Serializable {
 
@@ -69,8 +70,7 @@ public class User implements IData, Serializable {
         return password.equals(pass);
     }
 
-	// ---------- ---------- Getters ---------- ----------
-	
+    // ---------- ---------- Getters ---------- ----------
     public String getName() {
         return "" + name;
     }
@@ -102,10 +102,9 @@ public class User implements IData, Serializable {
     public String getUserID() {
         return "" + userId;
     }
-	
-	// ---------- ---------- Setters ---------- ----------
-	
-	public void setName(String n) {
+
+    // ---------- ---------- Setters ---------- ----------
+    public void setName(String n) {
         this.name = n;
     }
 
@@ -134,7 +133,7 @@ public class User implements IData, Serializable {
     }
 
     public void setUserID(String uid) {
-		
+
         this.userId = Integer.parseInt(uid);
     }
 }

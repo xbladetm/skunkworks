@@ -1,3 +1,8 @@
+/**
+ * Task almacena todos los datos que componen una tarea y todas las operaciones
+ * que se permiten sobre la misma.
+ *
+ */
 package ezCommon;
 
 import java.io.*;
