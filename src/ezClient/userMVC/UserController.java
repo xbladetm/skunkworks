@@ -106,6 +106,7 @@ public class UserController {
                 int pos = myView.availableList.getSelectedIndex();
                 Task t = (Task) myModel.tasks.get(pos);
                 t.setUserId(Integer.parseInt(myModel.getUserID()));
+                t.setStatus("INPROGRESS");
                 myModel.updateTask(t);
                 myModel.tasks.remove(pos);
                 myModel.myTasks.add(t);
