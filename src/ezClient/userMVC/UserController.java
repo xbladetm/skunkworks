@@ -70,7 +70,7 @@ public class UserController {
         return new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if (myView.myTaskList.getSelectedIndex() != -1 && !myModel.tasks.isEmpty()) {
+                if (myView.myTaskList.getSelectedIndex() != -1 && !myModel.myTasks.isEmpty()) {
                     myView.completeTaskBtn.setEnabled(true);
                     Task t = (Task) myModel.myTasks.get(myView.myTaskList.getSelectedIndex());
                     myView.myTaskDescription.setText(t.getDescription());
@@ -85,7 +85,7 @@ public class UserController {
         return new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if (myView.availableList.getSelectedIndex() != -1 && !myModel.myTasks.isEmpty()) {
+                if (myView.availableList.getSelectedIndex() != -1 && !myModel.tasks.isEmpty()) {
                     myView.assignTaskBtn.setEnabled(true);
                     Task t = (Task) myModel.tasks.get(myView.availableList.getSelectedIndex());
                     myView.taskDateAdded.setText(t.getAddedDate());
@@ -127,7 +127,7 @@ public class UserController {
                 t.setCompleted(today);
                 myModel.updateTask(t);
                 myModel.myTasks.remove(pos);
-                myView.availableList.setModel(getMyTaskListModel());
+                myView.myTaskList.setModel(getMyTaskListModel());
             }
         };
     }
